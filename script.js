@@ -228,8 +228,8 @@ const RankingLivros =  ([primeiro, segundo, terceiro, ...demaisLivros]) =>{
 RankingLivros(livrosOrdenados);
 /* 11 Crie uma arrowFunction que receba um objeto contendo altura e largura de um retângulo e retorne a área do retângulo. */
 
-// const areaRetangulo = (altura,largura)=> altura * largura;
-// console.log(areaRetangulo(2,3));
+const areaRetangulo = (a,l) => a * l;
+console.log(`A área total do retangulo é : ${areaRetangulo(2,3)}`);
 
 /*Crie uma função que retornará uma promise, ela receberá dois valores numéricos como parâmetro, 
 a função deve somar os dois valores e somente resolver a promise caso o resultado seja par retornando o valor da soma e 
