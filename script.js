@@ -17,7 +17,7 @@
  17. rest operator*/
 
 
-// Exercício 1: Considerando um objeto funcionário com as propriedades nome, idade, cargo e salário,
+//  Considerando um objeto funcionário com as propriedades nome, idade, cargo e salário,
 //  crie uma função que receba um objeto funcionário e retorne um novo objeto “clonando”
 //  o funcionário recebido, alterando o nome e a idade.
 
@@ -52,39 +52,27 @@ console.log(quadrados);
 
 quadradoLista(2, 4, 5, 8);
 
-// 12 Crie uma função que receba 3 parâmetros (bairro, cidade, estado) e imprima os dados em um formato de endereço,
-// utilizando Template String.
-
-//const endereço = {"bairro":"centro","cidade":"Biguaçu","estado":"SC"};
-
-function enderecoTemplate(bairro,cidade,estado){
-    endereco = `esse é o endereço que você colocou: bairro: ${bairro}, cidade: ${cidade}, estado:${estado}`
-    console.log(endereco);
-}
-enderecoTemplate('centro','biguaçu','SC');
-<<<<<<< Updated upstream
-=======
 
 
 /*Objeto Funcionário {
-	nome: 
+    nome: 
 	idade:
-cargo:
+    cargo:
 	salario: 
 }
      
 Crie uma função que receba um objeto funcionário com as propriedades descritas acima e separe em variáveis o nome,
- o cargo e o salário, imprimindo no console os valores extraídos.
+o cargo e o salário, imprimindo no console os valores extraídos.
 ArrowFunction: Converta para Arrow Function as funções criadas nos exercícios anteriores e compare os códigos.
 Template String: Crie uma função que receba um objeto funcionário, (o mesmo do exercício sobre Destructuring)
- e imprima os dados com a seguinte formatação:
+e imprima os dados com a seguinte formatação:
 <nome> atua no cargo de <cargo> e recebe um salário de <salario>
 
-	Objeto Funcionário {
-	nome: 
+Objeto Funcionário {
+    nome: 
 	idade:
-cargo:
-	salario: 
+    cargo:
+    salario: 
 }*/
 
 const funcionario2 = {
@@ -99,13 +87,13 @@ const imprimeFuncionario = funcionario => {
     const {nome, cargo, salario} = funcionario;
     
     console.log(`${nome} atua no cargo de ${cargo} e recebe ${salario}`);
-
+    
 }    
 
 imprimeFuncionario(funcionario2);
 
-/*Considerando uma entidade Pessoa que contém os atributos nome, idade, telefone e profissão, crie uma função que
- receba uma lista de pessoas e descubra se alguma das pessoas da lista é maior de idade (18 anos) retornando o resultado.*/
+/*3 -Considerando uma entidade Pessoa que contém os atributos nome, idade, telefone e profissão, crie uma função que
+receba uma lista de pessoas e descubra se alguma das pessoas da lista é maior de idade (18 anos) retornando o resultado.*/
 
 const Pessoas = [
     {nome:'Maria', idade:56, telefone:'35566222', profissão:''},
@@ -126,7 +114,7 @@ function pessoaMaioridade(pessoa){
 }
 pessoaMaioridade(Pessoas);
 
-/*Considerando a mesma entidade Pessoa do exercício 3crie uma função que receba uma lista de pessoas 
+/*4- Considerando a mesma entidade Pessoa do exercício 3crie uma função que receba uma lista de pessoas 
 e descubra se todas as pessoas da lista possuem a profissão “Programador” retornando o resultado.*/
 
 const programadoresTodos = Pessoas.every(profissao => Pessoas.profissao == 'programador');
@@ -136,15 +124,15 @@ console.log(programadoresTodos);
 
 /* 5
 Novamente considerando a entidade Pessoa do exercício 3: 
- crie uma função que receba uma lista de pessoas e retorne uma lista com os nomes das pessoas.*/
+crie uma função que receba uma lista de pessoas e retorne uma lista com os nomes das pessoas.*/
 
 const nomesRetorno = Pessoas.map(function (item) {
     return item.nome;
 });
 console.log(nomesRetorno);
 
-/*Novamente considerando a entidade Pessoa do exercício 3:  crie uma função que
- receba uma lista de pessoas e retorne uma nova lista contendo apenas as pessoas com idade menor que 18 anos.*/
+/*6-Novamente considerando a entidade Pessoa do exercício 3:  crie uma função que
+receba uma lista de pessoas e retorne uma nova lista contendo apenas as pessoas com idade menor que 18 anos.*/
 
 const menores = Pessoas.filter(function (item) {
     if(item.idade < 18){
@@ -154,8 +142,14 @@ const menores = Pessoas.filter(function (item) {
 });
 console.log(menores);
 
-/*Novamente considerando a entidade Pessoa do exercício 3: 
-crie uma função que receba uma lista de pessoas e retorne a primeira pessoa com idade maior que 18 anos.*/
+// 7 exercício repetido
+
+/*8 -Crie uma função que receba uma lista de valores numéricos,
+e utilizando a função reduce imprima a multiplicação dos valores da lista.*/
+const listaNumeros = [1,6,5,7];
+
+const listaDobrada = lista => lista.reduce((total, proximo) => total * proximo, 1);
+console.log(listaDobrada(listaNumeros))
 
 /*9Declare uma arrowFunction que deverá possuir dois parâmetros (nome, idade). 
 A nossa função deve mostrar no console a seguinte frase: “Olá, eu sou <nome>, e tenho <idade> anos”. */
@@ -165,9 +159,41 @@ const pessoaApresenta = (nome, idade) => {
 }  
 pessoaApresenta('maria', '15');
 
+/* 10 Crie uma função que retornará uma promise, ela receberá dois valores numéricos como parâmetro, 
+a função deve somar os dois valores e somente resolver a promise caso o resultado seja par retornando o valor da soma e 
+rejeitando a promise caso ímpar, retornando uma mensagem explicativa */
+export const somaVerificaPar = (a,b)=>{
+    const soma = a + b;
+    return new Promise((resolve,reject)=>{
+        if (soma%2 === 0){
+            resolve("A soma é par")
+        } else {
+            reject("A soma é impar, não pode ser dividida por 2")
+        }
+    })
+}
+
+somaVerificaPar(100,150).then(soma => console.log("O resultado da soma foi: ", soma)).catch(mensagem => console.log(mensagem));
+//somaVerificaPar(4,7).then(reject=> console.log(reject));
+
+/* 11 Crie uma arrowFunction que receba um objeto contendo altura e largura de um retângulo e retorne a área do retângulo. */
+
+const areaRetangulo = (a,l) => a * l;
+console.log(`A área total do retangulo é : ${areaRetangulo(2,3)}`);
+
+// 12 Crie uma função que receba 3 parâmetros (bairro, cidade, estado) e imprima os dados em um formato de endereço,
+// utilizando Template String.
+
+//const endereço = {"bairro":"centro","cidade":"Biguaçu","estado":"SC"};
+
+function enderecoTemplate(bairro,cidade,estado){
+    endereco = `esse é o endereço que você colocou: bairro: ${bairro}, cidade: ${cidade}, estado:${estado}`
+    console.log(endereco);
+}
+enderecoTemplate('centro','biguaçu','SC');
+
 /*13 Considerando uma entidade Cidade, contendo os seguintes atributos nome e estado, 
 crie uma função que receba uma lista de cidades e retorne a lista de cidades em que o estado seja “SC”.*/
-
 const cidades = [
     {cidade:'Florianópolis', estado:'SC'},
     {cidade:'Biguaçu', estado:'SC'},
@@ -179,26 +205,23 @@ const cidades = [
 function filtraCidades(cidade){
     return cidade.estado === 'SC' 
 }
-      
+
 function retornaLista() {
     return cidades.filter(filtraCidades);
 }
-// const retornaLista = cidades.filter(function (cidade) {
-//     return cidade.estado === 'SC';
-// });
 
 console.log(retornaLista());
 
 /*14 Considerando a entidade Cidade do exercício 13:  crie uma função que recebe uma
- lista de cidades e retorna uma lista com os nomes das cidades concatenados com o seu estado. */
+lista de cidades e retorna uma lista com os nomes das cidades concatenados com o seu estado. */
 
 const cidadesRetorno = cidades.map(function (item) {
     return `${item.cidade} - ${item.estado}`;
 });
 console.log(cidadesRetorno);
 
-/* 16 Novamente considerando a entidade Cidade do exercício 13: crie uma função que receba uma lista
- de cidades e verifique se alguma das cidades é do estado “RS”, retornando o resultado. */
+/* 15 Novamente considerando a entidade Cidade do exercício 13: crie uma função que receba uma lista
+de cidades e verifique se alguma das cidades é do estado “RS”, retornando o resultado. */
 
 const cidadeRs = cidades.some(elem => elem.estado === 'RS')
 console.log(cidadeRs);
@@ -212,13 +235,6 @@ function umaCidade(cidades){
 }
 umaCidade(cidades);
 
-/*Crie uma função que receba uma lista de valores numéricos,
- e utilizando a função reduce imprima a multiplicação dos valores da lista.*/
-const listaNumeros = [1,6,5,7];
-
-const listaDobrada = lista => lista.reduce((total, proximo) => total * proximo, 1);
-console.log(listaDobrada(listaNumeros))
-
 /* 17 Crie uma função que apresente o ranking dos livros mais vendidos. 
 Você precisa diferenciar a posição apenas dos 3 primeiros do ranking, os demais serão apenas listados.*/
 
@@ -228,26 +244,5 @@ const RankingLivros =  ([primeiro, segundo, terceiro, ...demaisLivros]) =>{
     console.log (`Primeiro colocado: ${primeiro}, segundo colocado:${segundo}, terceiro colocado: ${terceiro}, seguidos por ${demaisLivros}`)
 }
 RankingLivros(livrosOrdenados);
-/* 11 Crie uma arrowFunction que receba um objeto contendo altura e largura de um retângulo e retorne a área do retângulo. */
 
-const areaRetangulo = (a,l) => a * l;
-console.log(`A área total do retangulo é : ${areaRetangulo(2,3)}`);
 
-/*Crie uma função que retornará uma promise, ela receberá dois valores numéricos como parâmetro, 
-a função deve somar os dois valores e somente resolver a promise caso o resultado seja par retornando o valor da soma e 
-rejeitando a promise caso ímpar, retornando uma mensagem explicativa */
-// function somaVerificaPar(a,b){
-//     const soma = a + b;
-//     new Promise((resolve,reject)=>{
-//         if (soma%2 === 0){
-//             resolve("A soma é par")
-//         } else {
-//             reject("A soma é impar, não pode ser dividida por 2")
-//         }
-//     })
-// }
-
-// somaVerificaPar(4,7).then(reject=> console.log(reject));
-//b
-    
->>>>>>> Stashed changes
